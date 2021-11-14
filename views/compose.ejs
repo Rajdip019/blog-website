@@ -1,0 +1,45 @@
+<%- include('partials/header'); -%>
+
+  <body>
+
+    <div class="conatiner-home">
+      <div class="container-fluid">
+        <h1>Compose</h1>
+        <form action="/compose" method="post" class="post-form">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="text" class="form-control" name="postTitle" id="exampleFormControlInput1"
+              placeholder="Add a Title">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Post</label>
+            <textarea class="form-control" name="postBody" id="exampleFormControlTextarea1" placeholder="Add Post Data"
+              rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn-lg btn-primary">Publish</button>
+        </form>
+      </div>
+
+      <h1 style="text-decoration: underline;">All Posts:</h1>
+      <h4>You can Delete and Edit Posts From Here.</h4>
+
+      <% foundPostList.forEach(function(foundPostList){ %>
+        <h1>
+          <%= foundPostList.postTitle %>
+        </h1>
+        <% const previewContent=foundPostList.postBody %>
+
+          <p>
+            <%= previewContent %>
+              <a href="/post/<%= foundPostList.postTitle %>">Read More</a>
+          </p>
+          <form action="/delete" method="post">
+            <button name="DeletePostButton" class="deleteButton" value="<%= foundPostList._id  %>"
+              type="submit">Delete</button>
+          </form>
+          <% }) %>
+
+    </div>
+  </body>
+
+  <%- include('partials/footer'); -%>

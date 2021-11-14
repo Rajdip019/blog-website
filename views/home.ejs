@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+    </header>
+
+    <body>
+        <div class="conatiner-home">
+
+            <h1>Home</h1>
+            <p>
+                <%= homeStartingContent %>
+            </p>
+            <% foundPostList.forEach(function(foundPostList){ %>
+                <h1>
+                    <%= foundPostList.postTitle %>
+                </h1>
+                <% const previewContent=foundPostList.postBody %>
+
+                    <p>
+                        <%= previewContent %>
+                            <a href="/post/<%= foundPostList.postTitle %>">Read More</a>
+                    </p>
+                    <% }) %>
+
+        </div>
+    </body>
+    <footer>
+        <%- include('partials/footer'); -%>
+    </footer>
+
+    </html>
