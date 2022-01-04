@@ -31,7 +31,7 @@ app.get("/", function (req, res) {
       console.log(err);
     }
     else {
-      res.render("home", { homeStartingContent: homeStartingContent, foundPostList: foundPostList });
+      res.render("index", { homeStartingContent: homeStartingContent, foundPostList: foundPostList });
     }
   })
 });
